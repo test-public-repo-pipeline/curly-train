@@ -1,5 +1,6 @@
 node ('aws-centos') {
     stage('Test') {
-      sh "echo Hello from Github.com via ngrok!"
+      sh 'env | sort'
+      sh "echo Hello from Github.com!"
     }
 }
