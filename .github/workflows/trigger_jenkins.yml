@@ -24,5 +24,7 @@ jobs:
     steps:
     - run: env
     - name: trigger single Job
+      #run: |
+      #  curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ env.GITHUB_REPOSITORY_OWNER }}/job/${{ env.REPO_NAME }}/job/${{ env.GITHUB_REF_NAME }}/build
       run: |
-        curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ env.GITHUB_REPOSITORY_OWNER }}/job/${{ env.REPO_NAME }}/job/${{ env.GITHUB_REF_NAME }}/build
+        curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/test-public-repo-pipeline/job/curly-train/job/main/build
