@@ -19,11 +19,10 @@ jobs:
   trigger_jenkins:
     # The type of runner that the job will run on
     runs-on: self-hosted
+    env:
+      REPO_NAME: ${{ github.event.repository.name }}
     steps:
+    - run: env
     - name: trigger single Job
-      uses: appleboy/jenkins-action@master
-      with:
-        url: ${{ secrets.JENKINS_CONTROLLER_URL }}
-        user: ${{ secrets.JENKINS_TRIGGER_USER }}
-        token: ${{ secrets.JENKINS_TRIGGER_TOKEN }}
-        job: ${{ env.GITHUB_REPOSITORY }}
+      run: |
+        curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ env.GITHUB_REPOSITORY_OWNER }}/job/${{ env.REPO_NAME }}/job/${{ env.GITHUB_REF_NAME }}/build
