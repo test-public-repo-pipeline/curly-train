@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "trigger_jenkins"
   trigger_jenkins:
     # The type of runner that the job will run on
-    runs-on: self-hosted
+    runs-on: jenkins-trigger
     env:
       REPO_NAME: ${{ github.event.repository.name }}
     steps:
@@ -26,4 +26,4 @@ jobs:
       #run: |
       #  curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/${{ env.GITHUB_REPOSITORY_OWNER }}/job/${{ env.REPO_NAME }}/job/${{ env.GITHUB_REF_NAME }}/build
       run: |
-        curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/test-public-repo-pipeline/job/curly-train/job/main/build
+        env && curl -v -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/test-public-repo-pipeline/job/curly-train/job/main/build
