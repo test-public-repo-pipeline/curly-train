@@ -16,4 +16,9 @@ jobs:
     steps:
     - name: trigger single Job
       run: |
-        curl -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/$GITHUB_REPOSITORY_OWNER/job/${{ env.REPO_NAME }}/job/$GITHUB_REF_NAME/build
+        curl -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/$GITHUB_REPOSITORY_OWNER/job/${{ env.REPO_NAME }}/build\?delay=\0
+# curl -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/$GITHUB_REPOSITORY_OWNER/job/${{ env.REPO_NAME }}/job/$GITHUB_REF_NAME/build
+# check whether the job exists or not
+# curl -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/$GITHUB_REPOSITORY_OWNER/job/${{ env.REPO_NAME }}/job/$GITHUB_REF_NAME/api/json
+#Scan the repo
+# curl -X POST -u ${{ secrets.JENKINS_TRIGGER_USER }}:${{ secrets.JENKINS_TRIGGER_TOKEN }}  ${{ secrets.JENKINS_CONTROLLER_URL }}job/$GITHUB_REPOSITORY_OWNER/job/${{ env.REPO_NAME }}/build\?delay=\0
